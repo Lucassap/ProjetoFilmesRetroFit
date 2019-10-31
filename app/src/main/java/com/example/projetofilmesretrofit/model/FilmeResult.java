@@ -1,8 +1,6 @@
 
-package com.example.projetofilmesretrofit.repository;
+package com.example.projetofilmesretrofit.model;
 
-import com.example.projetofilmesretrofit.model.Dates;
-import com.example.projetofilmesretrofit.model.Filme;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,7 +14,7 @@ public class FilmeResult {
     @Expose
     private Long page;
     @Expose
-    private List<Filme> filmes;
+    private List<Result> results;
     @SerializedName("total_pages")
     private Long totalPages;
     @SerializedName("total_results")
@@ -38,12 +36,12 @@ public class FilmeResult {
         this.page = page;
     }
 
-    public List<Filme> getFilmes() {
-        return filmes;
+    public List<Result> getResults() {
+        return results;
     }
 
-    public void setFilmes(List<Filme> filmes) {
-        this.filmes = filmes;
+    public void setResults(List<Result> results) {
+        this.results = results;
     }
 
     public Long getTotalPages() {

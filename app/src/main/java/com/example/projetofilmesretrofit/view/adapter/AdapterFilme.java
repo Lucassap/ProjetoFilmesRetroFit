@@ -10,16 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetofilmesretrofit.R;
-import com.example.projetofilmesretrofit.model.Filme;
+import com.example.projetofilmesretrofit.model.Result;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolder> {
 
-    private List<Filme> listafilmes;
+    private List<Result> listafilmes;
 
-    public AdapterFilme(List<Filme> listafilmes) {
+    public AdapterFilme(List<Result> listafilmes) {
         this.listafilmes = listafilmes;
     }
 
@@ -33,12 +33,12 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Filme filme = listafilmes.get(position);
-        holder.onBind(filme);
+        Result result = listafilmes.get(position);
+        holder.onBind(result);
 
     }
 
-    public void atualizarLista(List<Filme> novaLista){
+    public void atualizarLista(List<Result> novaLista){
         this.listafilmes.clear();
         this.listafilmes = novaLista;
         notifyDataSetChanged();
@@ -63,10 +63,10 @@ public class AdapterFilme extends RecyclerView.Adapter<AdapterFilme.ViewHolder> 
             textView = itemView.findViewById(R.id.txtTitulo);
         }
 
-        public void onBind(Filme filme) {
-            textView.setText(filme.getTitle());
+        public void onBind(Result result) {
+            textView.setText(result.getTitle());
 
-            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + filme.getPosterPath()).into(imageView);
+            Picasso.get().load("https://image.tmdb.org/t/p/w500/" + result.getPosterPath()).into(imageView);
         }
     }
 }

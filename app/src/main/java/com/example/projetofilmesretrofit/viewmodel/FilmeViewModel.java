@@ -8,7 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.projetofilmesretrofit.model.Filme;
+import com.example.projetofilmesretrofit.model.Result;
 import com.example.projetofilmesretrofit.repository.FilmeRepository;
 
 import java.util.List;
@@ -18,7 +18,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class FilmeViewModel extends AndroidViewModel {
-    private MutableLiveData<List<Filme>> listafilme = new MutableLiveData<>();
+    private MutableLiveData<List<Result>> listafilme = new MutableLiveData<>();
     private MutableLiveData<Boolean> loading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private FilmeRepository repository = new FilmeRepository();
@@ -27,7 +27,7 @@ public class FilmeViewModel extends AndroidViewModel {
 
 
 
-    public LiveData<List<Filme>> getListaFilme(){
+    public LiveData<List<Result>> getListaFilme(){
         return this.listafilme;
     }
 
@@ -43,7 +43,7 @@ public class FilmeViewModel extends AndroidViewModel {
                 .doOnSubscribe(disposable1 -> loading.setValue(true))
                 .doOnTerminate(() -> loading.setValue(false))
                 .subscribe(filmeResult -> {
-                    listafilme.setValue(filmeResult.getFilmes());
+                    listafilme.setValue(filmeResult.getResults());
                 },
                         throwable ->{
                     Log.i ("LOG", "erro" + throwable.getMessage());
